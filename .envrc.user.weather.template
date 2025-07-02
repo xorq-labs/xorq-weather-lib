@@ -1,0 +1,2 @@
+export WEATHER_FEATURES_PORT=8819
+export WEATHER_API_URL=https://api.openweathermap.org/data/2.5/weather
