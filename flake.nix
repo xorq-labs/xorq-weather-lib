@@ -59,6 +59,7 @@
 
       pyprojectOverrides = final: prev: {
         hash-cache = prev.hash-cache.overrideAttrs (addResolved final [ "hatchling" ]);
+        xorq = prev.xorq.overrideAttrs (addResolved final [ "hatchling" ]);
       };
 
       pkgs = import nixpkgs {
