@@ -5,7 +5,6 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "hash-cache",
     "requests>=2.32.3",
     "toolz>=1.0.0",
     "urllib3>=2.2.3",
@@ -21,6 +20,3 @@ dev = [
     "pre-commit>=4.2.0",
     "ruff>=0.6.7",
 ]
-
-[tool.uv.sources]
-hash-cache = { git = "https://github.com/xorq-labs/hash-cache" }
