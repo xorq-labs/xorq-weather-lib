@@ -26,4 +26,3 @@ dev = [
 
 [tool.uv.sources]
 hash-cache = { git = "https://github.com/xorq-labs/hash-cache" }
-xorq = { git = "https://github.com/xorq-labs/xorq" }
