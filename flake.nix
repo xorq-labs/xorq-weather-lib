@@ -86,8 +86,8 @@
               pyprojectOverrides
             ]
           );
-      virtualenv-all = pythonSet.mkVirtualEnv "weather-lib-env" workspace.deps.all;
-      virtualenv-default = pythonSet.mkVirtualEnv "weather-lib-env" workspace.deps.all;
+      virtualenv-all = pythonSet.mkVirtualEnv "xorq-weather-lib-env" workspace.deps.all;
+      virtualenv-default = pythonSet.mkVirtualEnv "xorq-weather-lib-env" workspace.deps.all;
       impureShell = pkgs.mkShell {
         packages = [
           python
@@ -119,7 +119,7 @@
             lib.composeManyExtensions [
               editableOverlay
               (final: prev: {
-                weather-lib = prev.weather-lib.overrideAttrs (old: {
+                xorq-weather-lib = prev.xorq-weather-lib.overrideAttrs (old: {
                   # It's a good idea to filter the sources going into an editable build
                   # so the editable package doesn't have to be rebuilt on every change.
                   src = lib.fileset.toSource {
@@ -127,7 +127,7 @@
                     fileset = lib.fileset.unions [
                       (old.src + "/pyproject.toml")
                       (old.src + "/README.md")
-                      (old.src + "/src/weather_lib/__init__.py")
+                      (old.src + "/src/xorq_weather_lib/__init__.py")
                     ];
                   };
                   nativeBuildInputs =
@@ -140,7 +140,7 @@
               })
             ]
           );
-          virtualenv = editablePythonSet.mkVirtualEnv "weather-lib-dev-env" workspace.deps.all;
+          virtualenv = editablePythonSet.mkVirtualEnv "xorq-weather-lib-dev-env" workspace.deps.all;
         in
         pkgs.mkShell {
           packages = [
