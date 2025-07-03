@@ -23,6 +23,7 @@ env_config = EnvConfigable.subclass_from_kwargs(
     "OPENWEATHER_API_KEY",
     "WEATHER_FEATURES_PORT",
     "WEATHER_API_URL",
+    "WEATHER_CACHE_DIR",
 ).from_env()
 OPENWEATHER_KEY = env_config.OPENWEATHER_API_KEY
 assert OPENWEATHER_KEY
@@ -30,6 +31,7 @@ WEATHER_FEATURES_PORT = int(env_config.WEATHER_FEATURES_PORT)
 assert WEATHER_FEATURES_PORT
 WEATHER_API_URL = env_config.WEATHER_API_URL
 assert WEATHER_API_URL
+cache_dir = Path(env_config.WEATHER_CACHE_DIR or xo.common.utils.caching_utils.get_xorq_cache_dir().joinpath("./weather-cache"))
 
 
 def extract_dct(data):
@@ -67,7 +69,7 @@ def extract_dct(data):
 
 
 @hash_cache(
-    Path("./weather-cache"),
+    cache_dir,
     serder=Serder.json_serder(),
     args_kwargs_serder=Serder.args_kwargs_json_serder(),
     ttl=timedelta(seconds=3),
