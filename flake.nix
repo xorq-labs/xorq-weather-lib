@@ -60,12 +60,20 @@
       pyprojectOverrides = final: prev: {
         hash-cache = prev.hash-cache.overrideAttrs (addResolved final [ "hatchling" ]);
         xorq = prev.xorq.overrideAttrs (addResolved final [ "hatchling" ]);
+        grpcio = prev.grpcio.overrideAttrs (old: {
+          buildInputs = (builtins.filter (drv: drv.pname or drv.name != "cython" ) old.buildInputs) ++ final.resolveBuildSystem {
+            cython = [ ];
+          };
+          # nativeBuildInputs = (builtins.filter (drv: drv.pname or drv.name != "cython" ) old.nativeBuildInputs) ++ final.resolveBuildSystem {
+          #   cython = [ ];
+          # };
+        });
       };
 
       pkgs = import nixpkgs {
         system = "x86_64-linux";
       };
-      python = pkgs.python312;
+      python = pkgs.python313;
       pythonSet =
         (pkgs.callPackage pyproject-nix.build.packages {
           inherit python;
@@ -74,8 +82,8 @@
             lib.composeManyExtensions [
               pyproject-build-systems.overlays.default
               overlay
-              pyprojectOverrides
               (uv2nix_hammer_overrides.overrides pkgs)
+              pyprojectOverrides
             ]
           );
       virtualenv-all = pythonSet.mkVirtualEnv "weather-lib-env" workspace.deps.all;
@@ -167,6 +175,7 @@
       };
       lib.x86_64-linux = {
         inherit pkgs;
+        inherit virtualenv-all pythonSet;
       };
       devShells.x86_64-linux = {
         inherit impureShell uv2nixShell;
