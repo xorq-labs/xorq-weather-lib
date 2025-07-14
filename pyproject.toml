@@ -23,6 +23,3 @@ dev = [
     "pre-commit>=4.2.0",
     "ruff>=0.6.7",
 ]
-
-[tool.uv.sources]
-xorq-hash-cache = { git = "https://github.com/xorq-labs/hash-cache" }
