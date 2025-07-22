@@ -7,7 +7,7 @@ import pandas as pd
 import pyarrow as pa
 import requests
 import toolz
-from hash_cache.hash_cache import (
+from xorq_hash_cache.hash_cache import (
     Serder,
     hash_cache,
 )
