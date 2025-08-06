@@ -127,7 +127,7 @@ schema_out = xo.schema(
         "ground_level_pressure_hpa": "int64",
         # wind fields: speed and gust as floats, direction as nullable integer
         "wind_direction_deg": "int64",
-        "wind_gust_ms": "int64",
+        "wind_gust_ms": "double",
         "clouds_percent": "int64",
         "visibility_m": "int64",
         "data_timestamp": "int64",
