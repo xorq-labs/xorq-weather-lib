@@ -7,7 +7,7 @@ import pandas as pd
 import pyarrow as pa
 import requests
 import toolz
-from hash_cache.hash_cache import (
+from xorq_hash_cache.hash_cache import (
     Serder,
     hash_cache,
 )
@@ -127,7 +127,7 @@ schema_out = xo.schema(
         "ground_level_pressure_hpa": "int64",
         # wind fields: speed and gust as floats, direction as nullable integer
         "wind_direction_deg": "int64",
-        "wind_gust_ms": "int64",
+        "wind_gust_ms": "double",
         "clouds_percent": "int64",
         "visibility_m": "int64",
         "data_timestamp": "int64",

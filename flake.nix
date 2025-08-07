@@ -58,7 +58,7 @@
         });
 
       pyprojectOverrides = final: prev: {
-        hash-cache = prev.hash-cache.overrideAttrs (addResolved final [ "hatchling" ]);
+        xorq-hash-cache = prev.xorq-hash-cache.overrideAttrs (addResolved final [ "hatchling" ]);
         xorq = prev.xorq.overrideAttrs (addResolved final [ "hatchling" ]);
         grpcio = prev.grpcio.overrideAttrs (old: {
           buildInputs = (builtins.filter (drv: drv.pname or drv.name != "cython" ) old.buildInputs) ++ final.resolveBuildSystem {
