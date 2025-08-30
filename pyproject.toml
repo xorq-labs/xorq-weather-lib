@@ -1,6 +1,6 @@
 [project]
 name = "xorq-weather-lib"
-version = "0.1.0"
+version = "0.1.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -11,7 +11,7 @@ dependencies = [
     "requests>=2.32.3",
     "toolz>=1.0.0",
     "urllib3>=2.2.3",
-    "xorq>=0.2.2",
+    "xorq>=0.3.1",
 ]
 
 [build-system]
