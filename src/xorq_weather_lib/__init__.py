@@ -12,7 +12,8 @@ from xorq_hash_cache.hash_cache import (
     hash_cache,
 )
 
-import xorq as xo
+import xorq
+import xorq.api as xo
 from xorq.common.utils.env_utils import (
     EnvConfigable,
 )
@@ -31,7 +32,10 @@ WEATHER_FEATURES_PORT = int(env_config.WEATHER_FEATURES_PORT)
 assert WEATHER_FEATURES_PORT
 WEATHER_API_URL = env_config.WEATHER_API_URL
 assert WEATHER_API_URL
-cache_dir = Path(env_config.WEATHER_CACHE_DIR or xo.common.utils.caching_utils.get_xorq_cache_dir().joinpath("./weather-cache"))
+cache_dir = Path(
+    env_config.WEATHER_CACHE_DIR
+    or xorq.common.utils.caching_utils.get_xorq_cache_dir().joinpath("./weather-cache")
+)
 
 
 def extract_dct(data):
